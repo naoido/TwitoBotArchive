@@ -1,0 +1,6 @@
+# プロジェクトの除外パス
+/.gradle/
+/build/
+/media_url.json
+/src/main/resources/sql.properties
+/src/main/resources/token.properties

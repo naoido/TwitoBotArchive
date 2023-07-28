@@ -1,0 +1,37 @@
+plugins {
+    id "java"
+    id "org.jetbrains.kotlin.jvm" version "+"
+}
+
+group = 'com.naoido'
+version = '1.0.0'
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    implementation group: "net.dv8tion", name: "JDA", version: "+"
+    implementation group:"com.twitter", name: "twitter-api-java-sdk", version: "+"
+    implementation group: "com.fasterxml.jackson.core", name:"jackson-databind", version: "+"
+    implementation group: 'com.fasterxml.jackson.module', name: 'jackson-module-kotlin', version: "+"
+    implementation group: 'mysql', name: 'mysql-connector-java', version: '+'
+    implementation group: "org.eclipse.jetty", name:"jetty-server", version: '11.0.14'
+    implementation group: "org.eclipse.jetty", name: "jetty-servlet", version:"11.0.12"
+    implementation group: 'net.sf.trove4j', name: 'trove4j', version: '3.0.3'
+    implementation group: "com.sedmelluq", name: "lavaplayer", version: "+"
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib'
+}
+
+jar {
+    duplicatesStrategy = 'exclude'
+    manifest {
+        attributes "Main-Class": "com.naoido.MainKt"
+    }
+    from {
+        configurations.compileClasspath.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
+}
